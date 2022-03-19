@@ -10,6 +10,67 @@ const _defaultPadding = EdgeInsets.all(16);
 final _defaultBorderRadius = BorderRadius.circular(4);
 const _defaultAlertStatus = AlertStatus.primary;
 
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     status: AlertStatus.primary,
+///     text: 'Default Primary Alert',
+/// ),
+/// ```
+///
+///
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     status: AlertStatus.warning,
+///     leadingIcon: AlertIcons.warning,
+///     text: 'Warning Alert with Icon',
+/// ),
+/// ```
+///
+///
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     status: AlertStatus.success,
+///     leadingIcon: AlertIcons.success,
+///     isDismissible: true,
+///     text: 'Success Alert with Icon',
+/// ),
+/// ```
+///
+///
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     status: AlertStatus.danger,
+///     leadingIcon: AlertIcons.warning,
+///     isDismissible: true,
+///     autoCloseDuration: Duration(seconds: 1),
+///     text: 'Danger Alert with Icon, Dismiss Button and Auto Close',
+/// ),
+/// ```
+///
+///
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     text: 'Danger Alert with Icon, Dismiss Button and Auto Close',
+///     borderRadius: BorderRadius.only(
+///         topLeft: Radius.circular(36),
+///         bottomRight: Radius.circular(36),
+///     ),
+/// ),
+/// ```
+///
+///
+/// ```dart
+/// BootstrapAlert(
+///     visible: true,
+///     text: 'Danger Alert with Icon, Dismiss Button and Auto Close',
+///     padding: EdgeInsets.all(4),
+/// ),
+/// ```
 class BootstrapAlert extends StatefulWidget {
   const BootstrapAlert({
     Key? key,
