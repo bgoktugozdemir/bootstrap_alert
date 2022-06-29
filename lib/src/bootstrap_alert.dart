@@ -129,20 +129,24 @@ class _BootstrapAlertState extends State<BootstrapAlert> {
   late final AlertColor alertColor;
   Timer? timer;
 
+  EdgeInsetsGeometry get margin => widget.margin ?? _defaultMargin;
+  EdgeInsetsGeometry get padding => widget.padding ?? _defaultPadding;
+  Border get border => Border.all(color: alertColor.borderColor, width: 1);
+  BorderRadius get borderRadius => widget.borderRadius ?? _defaultBorderRadius;
+
   @override
   void initState() {
     super.initState();
     visible = widget.visible;
     alertColor = widget.status.alertColor;
-    if (widget.autoCloseDuration != null) {
-      timer = Timer(widget.autoCloseDuration!, _dismissAlert);
-    }
+    _setTimer();
   }
 
   @override
   void didUpdateWidget(BootstrapAlert oldWidget) {
     super.didUpdateWidget(oldWidget);
     visible = widget.visible;
+    _setTimer();
   }
 
   @override
@@ -185,14 +189,17 @@ class _BootstrapAlertState extends State<BootstrapAlert> {
     );
   }
 
-  EdgeInsetsGeometry get margin => widget.margin ?? _defaultMargin;
-  EdgeInsetsGeometry get padding => widget.padding ?? _defaultPadding;
-  Border get border => Border.all(color: alertColor.borderColor, width: 1);
-  BorderRadius get borderRadius => widget.borderRadius ?? _defaultBorderRadius;
+  void _setTimer() {
+    if (widget.autoCloseDuration != null && visible == true) {
+      timer?.cancel();
+      timer = Timer(widget.autoCloseDuration!, _dismissAlert);
+    }
+  }
 
   void _dismissAlert() {
+    timer?.cancel();
+    timer = null;
     if (visible) {
-      timer?.cancel();
       setState(() {
         visible = false;
       });
